@@ -1,0 +1,2 @@
+class DjSet < ApplicationRecord
+end
