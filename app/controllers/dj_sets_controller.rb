@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class DjSetsController < ApplicationController
+class DjSetsController < ProtectedController
   before_action :set_dj_set, only: %i[show update destroy]
   def index
-    @dj_sets = DjSet.all
+    @dj_sets = current_user.dj_sets.all
     render json: @dj_sets
   end
 
@@ -12,7 +12,7 @@ class DjSetsController < ApplicationController
   end
 
   def create
-    @dj_set = DjSet.new(dj_set_params)
+    @dj_set = current_user.dj_sets.build(dj_set_params)
 
     if @dj_set.save
       render json: @dj_set
@@ -36,7 +36,7 @@ class DjSetsController < ApplicationController
   private
 
   def set_dj_set
-    @dj_set = DjSet.find(params[:id])
+    @dj_set = current_user.dj_sets.find(params[:id])
   end
 
   def dj_set_params
