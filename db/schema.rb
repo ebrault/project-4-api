@@ -10,26 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_212527) do
+ActiveRecord::Schema.define(version: 2018_12_04_143542) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "collections", force: :cascade do |t|
-    t.string "collection_number"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "dj_sets", force: :cascade do |t|
-    t.string "dj"
-    t.string "title"
-    t.string "set_type"
-    t.string "genre"
-    t.datetime "date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "examples", force: :cascade do |t|
     t.text "text", null: false
@@ -37,6 +21,16 @@ ActiveRecord::Schema.define(version: 2018_12_03_212527) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_examples_on_user_id"
+  end
+
+  create_table "mixes", force: :cascade do |t|
+    t.string "dj"
+    t.string "title"
+    t.string "mix_type"
+    t.string "genre"
+    t.datetime "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
