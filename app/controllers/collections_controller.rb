@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class CollectionsController < ApplicationController
+class CollectionsController < ProtectedController
   before_action :set_collection, only: %i[show update destroy]
   def index
-    @collections = Collection.all
+    @collections = current_user.collections.all
     render json: @collections
   end
 
@@ -12,9 +12,9 @@ class CollectionsController < ApplicationController
   end
 
   def create
-    @collection = Collection.new(collection_params)
+    @collection = current_user.collections.build(collection_params)
     if @collection.save
-      render json: @collection, status: :created, location: @collection
+      render json: @collection
     else
       render json: @collection.errors, status: :unprocessable_entity
     end
@@ -35,7 +35,7 @@ class CollectionsController < ApplicationController
   private
 
   def set_collection
-    @collection = Collection.find(params[:id])
+    @collection = current_user.collections.find(params[:id])
   end
 
   def collection_params

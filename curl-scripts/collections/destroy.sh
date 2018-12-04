@@ -1,6 +1,7 @@
 !#/bin/bash
 curl "http://localhost:4741/collections/${ID}" \
   --include \
-  --request DELETE
+  --request DELETE \
+  --header "Authorization: Token token=${TOKEN}"
 
   echo
