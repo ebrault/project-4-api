@@ -5,7 +5,8 @@ curl "http://localhost:4741/votes" \
   --header "Content-Type: application/json" \
   --data '{
     "vote": {
-      "vote_count": "'"${VC}"'"
+      "vote_count": "'"${VC}"'",
+      "mix_id": "'"${MID}"'"
     }
   }'
 

@@ -41,6 +41,6 @@ class VotesController < ApplicationController
   end
 
   def vote_params
-    params.require(:vote).permit(:vote_count)
+    params.require(:vote).permit(:vote_count, :mix_id)
   end
 end
