@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :mixes, except: %i[new edit]
   resources :collections, except: %i[new edit]
   resources :votes, except: %i[new edit]
+  resources :comments, except: %i[new edit]
 
   # Custom routes
   post '/sign-up' => 'users#signup'
