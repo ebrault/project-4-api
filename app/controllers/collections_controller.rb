@@ -3,8 +3,8 @@
 class CollectionsController < ProtectedController
   before_action :set_collection, only: %i[show update destroy]
   def index
-    @collections = current_user.collections.all
-    render json: @collections
+    @collection = current_user.collection
+    render json: @collection
   end
 
   def show
@@ -12,7 +12,7 @@ class CollectionsController < ProtectedController
   end
 
   def create
-    @collection = current_user.collections.build(collection_params)
+    @collection = current_user.build_collection(collection_params)
     if @collection.save
       render json: @collection
     else
@@ -35,7 +35,7 @@ class CollectionsController < ProtectedController
   private
 
   def set_collection
-    @collection = current_user.collections.find(params[:id])
+    @collection = current_user.collection.find(params[:id])
   end
 
   def collection_params
