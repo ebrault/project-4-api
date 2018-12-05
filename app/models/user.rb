@@ -6,4 +6,5 @@ class User < ApplicationRecord
   has_one :collection
   has_many :mixes
   has_many :votes
+  has_many :comments
 end

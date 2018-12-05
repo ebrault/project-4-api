@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class CommentsController < ApplicationController
+class CommentsController < ProtectedController
   before_action :set_comment, only: %i[show update destroy]
   def index
-    @comments = Comment.all
+    @comments = current_user.comments.all
     render json: @comments
   end
 
@@ -12,8 +12,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
-
+    @comment = current_user.comments.build(comment_params)
     if @comment.save
       render json: @comment
     else
@@ -36,7 +35,7 @@ class CommentsController < ApplicationController
   private
 
   def set_comment
-    @comment = Comment.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
   end
 
   def comment_params
