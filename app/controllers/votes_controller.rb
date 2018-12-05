@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-class VotesController < ApplicationController
+class VotesController < ProtectedController
   before_action :set_vote, only: %i[show update destroy]
-
   def index
-    @votes = Vote.all
+    @votes = current_user.votes.all
     render json: @votes
   end
 
@@ -13,8 +12,7 @@ class VotesController < ApplicationController
   end
 
   def create
-    @vote = Vote.new(vote_params)
-
+    @vote = current_user.votes.build(vote_params)
     if @vote.save
       render json: @vote
     else
@@ -37,7 +35,7 @@ class VotesController < ApplicationController
   private
 
   def set_vote
-    @vote = Vote.find(params[:id])
+    @vote = current_user.votes.find(params[:id])
   end
 
   def vote_params

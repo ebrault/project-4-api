@@ -5,4 +5,5 @@ class User < ApplicationRecord
   has_many :examples
   has_one :collection
   has_many :mixes
+  has_many :votes
 end
