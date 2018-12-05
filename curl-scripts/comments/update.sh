@@ -5,7 +5,8 @@ curl "http://localhost:4741/comments/${ID}" \
   --header "Content-Type: application/json" \
   --data '{
     "comment": {
-      "comment_body": "'"${CB}"'"
+      "comment_body": "'"${CB}"'",
+      "mix_id": "'"${MID}"'"
     }
   }'
 

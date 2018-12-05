@@ -40,6 +40,6 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:comment_body)
+    params.require(:comment).permit(:comment_body, :mix_id)
   end
 end
