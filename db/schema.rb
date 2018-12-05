@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_05_140514) do
+ActiveRecord::Schema.define(version: 2018_12_05_143644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2018_12_05_140514) do
     t.datetime "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_mixes_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,5 +72,6 @@ ActiveRecord::Schema.define(version: 2018_12_05_140514) do
   add_foreign_key "collections", "users"
   add_foreign_key "comments", "mixes"
   add_foreign_key "examples", "users"
+  add_foreign_key "mixes", "users"
   add_foreign_key "votes", "mixes"
 end

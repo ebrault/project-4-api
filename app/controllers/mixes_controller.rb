@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class MixesController < ApplicationController
+class MixesController < ProtectedController
   before_action :set_mix, only: %i[show update destroy]
   def index
-    @mixes = Mix.all
+    @mixes = current_user.mixes.all
     render json: @mixes
   end
 
@@ -12,7 +12,7 @@ class MixesController < ApplicationController
   end
 
   def create
-    @mix = Mix.new(mix_params)
+    @mix = current_user.mixes.build(mix_params)
     if @mix.save
       render json: @mix
     else
@@ -35,7 +35,7 @@ class MixesController < ApplicationController
   private
 
   def set_mix
-    @mix = Mix.find(params[:id])
+    @mix = current_user.mixes.find(params[:id])
   end
 
   def mix_params

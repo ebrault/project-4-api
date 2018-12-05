@@ -4,4 +4,5 @@ class User < ApplicationRecord
   include Authentication
   has_many :examples
   has_one :collection
+  has_many :mixes
 end
