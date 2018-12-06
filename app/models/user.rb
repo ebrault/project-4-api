@@ -3,5 +3,8 @@
 class User < ApplicationRecord
   include Authentication
   has_many :examples
-  has_many :dj_sets
+  has_one :collection
+  has_many :mixes
+  has_many :votes
+  has_many :comments
 end

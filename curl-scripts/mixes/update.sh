@@ -1,13 +1,14 @@
 #!/bin/bash
-curl "http://localhost:4741/dj_sets" \
+curl "http://localhost:4741/mixes/${ID}" \
   --include \
-  --request POST \
+  --request PATCH \
   --header "Content-Type: application/json" \
+  --header "Authorization: Token token=${TOKEN}" \
   --data '{
-    "dj_set": {
+    "mix": {
       "dj": "'"${DJ}"'",
       "title": "'"${TITLE}"'",
-      "set_type": "'"${TYPE}"'",
+      "mix_type": "'"${TYPE}"'",
       "genre": "'"${GENRE}"'",
       "date": "'"${DATE}"'"
     }

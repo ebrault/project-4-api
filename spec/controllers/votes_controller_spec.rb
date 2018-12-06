@@ -23,10 +23,10 @@ require 'rails_helper'
 # removed from Rails core in Rails 5, but can be added back in via the
 # `rails-controller-testing` gem.
 
-RSpec.describe DjSetsController, type: :controller do
+RSpec.describe VotesController, type: :controller do
 
   # This should return the minimal set of attributes required to create a valid
-  # DjSet. As you add validations to DjSet, be sure to
+  # Vote. As you add validations to Vote, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
     skip("Add a hash of attributes valid for your model")
@@ -38,12 +38,12 @@ RSpec.describe DjSetsController, type: :controller do
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
-  # DjSetsController. Be sure to keep this updated too.
+  # VotesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
   describe "GET #index" do
     it "returns a success response" do
-      dj_set = DjSet.create! valid_attributes
+      vote = Vote.create! valid_attributes
       get :index, params: {}, session: valid_session
       expect(response).to be_success
     end
@@ -51,33 +51,33 @@ RSpec.describe DjSetsController, type: :controller do
 
   describe "GET #show" do
     it "returns a success response" do
-      dj_set = DjSet.create! valid_attributes
-      get :show, params: {id: dj_set.to_param}, session: valid_session
+      vote = Vote.create! valid_attributes
+      get :show, params: {id: vote.to_param}, session: valid_session
       expect(response).to be_success
     end
   end
 
   describe "POST #create" do
     context "with valid params" do
-      it "creates a new DjSet" do
+      it "creates a new Vote" do
         expect {
-          post :create, params: {dj_set: valid_attributes}, session: valid_session
-        }.to change(DjSet, :count).by(1)
+          post :create, params: {vote: valid_attributes}, session: valid_session
+        }.to change(Vote, :count).by(1)
       end
 
-      it "renders a JSON response with the new dj_set" do
+      it "renders a JSON response with the new vote" do
 
-        post :create, params: {dj_set: valid_attributes}, session: valid_session
+        post :create, params: {vote: valid_attributes}, session: valid_session
         expect(response).to have_http_status(:created)
         expect(response.content_type).to eq('application/json')
-        expect(response.location).to eq(dj_set_url(DjSet.last))
+        expect(response.location).to eq(vote_url(Vote.last))
       end
     end
 
     context "with invalid params" do
-      it "renders a JSON response with errors for the new dj_set" do
+      it "renders a JSON response with errors for the new vote" do
 
-        post :create, params: {dj_set: invalid_attributes}, session: valid_session
+        post :create, params: {vote: invalid_attributes}, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
@@ -90,27 +90,27 @@ RSpec.describe DjSetsController, type: :controller do
         skip("Add a hash of attributes valid for your model")
       }
 
-      it "updates the requested dj_set" do
-        dj_set = DjSet.create! valid_attributes
-        put :update, params: {id: dj_set.to_param, dj_set: new_attributes}, session: valid_session
-        dj_set.reload
+      it "updates the requested vote" do
+        vote = Vote.create! valid_attributes
+        put :update, params: {id: vote.to_param, vote: new_attributes}, session: valid_session
+        vote.reload
         skip("Add assertions for updated state")
       end
 
-      it "renders a JSON response with the dj_set" do
-        dj_set = DjSet.create! valid_attributes
+      it "renders a JSON response with the vote" do
+        vote = Vote.create! valid_attributes
 
-        put :update, params: {id: dj_set.to_param, dj_set: valid_attributes}, session: valid_session
+        put :update, params: {id: vote.to_param, vote: valid_attributes}, session: valid_session
         expect(response).to have_http_status(:ok)
         expect(response.content_type).to eq('application/json')
       end
     end
 
     context "with invalid params" do
-      it "renders a JSON response with errors for the dj_set" do
-        dj_set = DjSet.create! valid_attributes
+      it "renders a JSON response with errors for the vote" do
+        vote = Vote.create! valid_attributes
 
-        put :update, params: {id: dj_set.to_param, dj_set: invalid_attributes}, session: valid_session
+        put :update, params: {id: vote.to_param, vote: invalid_attributes}, session: valid_session
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.content_type).to eq('application/json')
       end
@@ -118,11 +118,11 @@ RSpec.describe DjSetsController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    it "destroys the requested dj_set" do
-      dj_set = DjSet.create! valid_attributes
+    it "destroys the requested vote" do
+      vote = Vote.create! valid_attributes
       expect {
-        delete :destroy, params: {id: dj_set.to_param}, session: valid_session
-      }.to change(DjSet, :count).by(-1)
+        delete :destroy, params: {id: vote.to_param}, session: valid_session
+      }.to change(Vote, :count).by(-1)
     end
   end
 

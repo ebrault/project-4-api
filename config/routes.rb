@@ -3,7 +3,10 @@
 Rails.application.routes.draw do
   # RESTful routes
   resources :examples, except: %i[new edit]
-  resources :dj_sets, except: %i[new edit]
+  resources :mixes, except: %i[new edit]
+  resources :collections, except: %i[new edit]
+  resources :votes, except: %i[new edit]
+  resources :comments, except: %i[new edit]
 
   # Custom routes
   post '/sign-up' => 'users#signup'

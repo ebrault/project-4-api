@@ -1,9 +1,9 @@
-class CreateDjSets < ActiveRecord::Migration[5.2]
+class CreateMixes < ActiveRecord::Migration[5.2]
   def change
-    create_table :dj_sets do |t|
+    create_table :mixes do |t|
       t.string :dj
       t.string :title
-      t.string :set_type
+      t.string :mix_type
       t.string :genre
       t.datetime :date
 
