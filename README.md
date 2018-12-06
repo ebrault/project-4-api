@@ -52,12 +52,17 @@ This is a simple front-end client for Best Mixes, an app used to track and vote 
 <h1>ERDs</h1>
 
 ![V1](https://i.imgur.com/mIhKkpa.jpg)
+
 ![V2](https://i.imgur.com/sfKn0jf.jpg)
 
 <h1>Wireframes</h1>
+
 ![Signed Out](https://i.imgur.com/G69NoQa.jpg)
+
 ![Signed In](https://i.imgur.com/S74jiYe.jpg)
+
 ![My Mixes](https://i.imgur.com/GaRRnRA.jpg)
+
 ![Add A Mix](https://i.imgur.com/tQsBxLv.jpg)
 
 <h1>User Stories</h1>
