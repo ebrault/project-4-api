@@ -99,6 +99,7 @@ Version 3
 * View tracks on Discogs Marketplace
 
 <h1>App Screenshot</h1>
+
 ![App](https://i.imgur.com/9YI1I8d.png)
 
 <h1>API Routes</h1>
